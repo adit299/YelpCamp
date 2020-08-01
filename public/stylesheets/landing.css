@@ -1,0 +1,112 @@
+body {
+    background-color: #000;
+}
+
+#landing-header {
+    /* Z-index controls where the element would be position if we were viewing it on a */
+    /* 3-dimensional plane. So for example, z-index: 1 means that the content is pushed higher */
+    /* up than the others. */
+    z-index: 1;
+    /* The position must be set to relative, otherwise, in static mode, the z-index will be ignored */
+    position: relative;
+    text-align: center;
+    /* This helps us center the header vertically as well */
+    padding-top: 40vh;
+}
+
+#landing-header h1 {
+    color: #fff;
+}
+
+/* This selects the unordered list for styling */
+.slideshow {
+     /* This element will not be effected by resizing the window */
+    position: fixed;
+    /* It will take up the entire page */
+    width: 100%;
+    height: 100%;
+    /* It is located in the top left corner of the page, behind the rest of the content */
+    top: 0;
+    left: 0;
+    z-index: 0;
+    /* The bullet points will not show up */
+    list-style: none;
+    /* There will be no margin or padding */
+    margin: 0;
+    padding: 0;
+}
+
+/* We select each of the individual list items to style*/
+.slideshow li { 
+    /* Each element takes up the entire screen */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* The image takes up the entire page, and are centered */
+    background-size: cover;
+    background-position: 50% 50%;
+    /* The images are not repeated if they don't take up the entire page */
+    background-repeat: no-repeat;
+    /* The images start faded out, but we utilize the animation to fade the images back in */
+    opacity: 0;
+    z-index: 0;
+    /* This is what allows us to add an animation */
+    /* imageAnimation: is an arbitrary name for our animation that we can select  */
+    /* 50s: the duration that an image is on screen */
+    /* linear: means the whole animation runs at the same speed */
+    /* infinte: loops an infinite amount of times */
+    animation: imageAnimation 50s linear infinite; 
+  }
+
+  /* We select each of the individual list elements and assign them a background image */
+  .slideshow li:nth-child(1) { 
+    background-image: url(https://images.unsplash.com/photo-1526491109672-74740652b963?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80) 
+  }
+  .slideshow li:nth-child(2) { 
+    background-image: url(https://images.unsplash.com/photo-1490452322586-70484206da38?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+    /* The next image will fade-in after the 10s delay */
+    animation-delay: 10s; 
+  }
+  .slideshow li:nth-child(3) { 
+    background-image: url(https://images.unsplash.com/photo-1571687949921-1306bfb24b72?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80);
+    animation-delay: 20s; 
+  }
+  .slideshow li:nth-child(4) { 
+    background-image: url(https://images.unsplash.com/photo-1528433556524-74e7e3bfa599?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+    animation-delay: 30s; 
+  }
+  .slideshow li:nth-child(5) { 
+    background-image: url(https://images.unsplash.com/photo-1542338106-1b4bfe84d5df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
+    animation-delay: 40s; 
+  }
+
+  /* This helps us select the animation which we defined before */
+  /* Not too sure about what the animation percentages are... */
+  @keyframes imageAnimation { 
+    0% { 
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+  }
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+/* For browsers that do not have animation support, simply one page is */
+/* displayed for the background, and no animations are present */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}
+
+
+
